@@ -1,0 +1,34 @@
+.row,.hrow{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.name ,.hname{
+    width: 80px;
+}
+.age,.hage{
+    width: 35px;
+}
+.sex,.hsex{
+    width: 40px;
+}
+.aadhaar,.haadhaar{
+    width: 165px;
+}
+.ano,.hano{
+    width: 155px;
+}
+.daughters,.hdaughters{
+    width: 60px;
+    margin-right: 20px;
+}
+.hrow{
+    margin-bottom: 30px;
+}
+.row{
+    margin-bottom: 25px;
+}
+table{
+    border: 2px solid orange;
+    padding: 30px;
+}
