@@ -5,6 +5,8 @@ export const registrations = [
         "sex": "Male",
         "aadhaar": "1234-5678-9101",
         "pan": "ABCDE1234F",
+        "phone":'',
+        "qualification":"",
         "bank_details": {
             "bank_name": "State Bank of India",
             "account_number": "123456789012",
@@ -21,8 +23,9 @@ export const registrations = [
                 "age": 15,
                 "sex": "Female",
                 "aadhaar": "5678-1234-9012",
-                "school": "ABC High School",
-                "grade": "10th",
+                "highest_Qualification": "Btech",
+                "school/university":'IIT BHU',
+                "passing_year": "2024",
                 "bank_details": {
                     "bank_name": "State Bank of India",
                     "account_number": "234567890123",
