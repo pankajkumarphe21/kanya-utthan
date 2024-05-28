@@ -20,8 +20,6 @@ const signup = () => {
       accountNumber: "",
       ifsc_code: "",
       image: "",
-    },
-    ecomonicDetails: {
       income: 750000,
       occupation: "",
       company: "",
@@ -31,18 +29,20 @@ const signup = () => {
       age: "",
       sex: "",
       aadhaar: "",
-      highestQualificattion: "",
+      highestqualificattion: "",
       university: "",
-      passingYear: "",
-      bank_details: {
-        bank_name: "",
-        account_number: "",
-        ifsc_code: "",
-      },
+      passingyear: "",
+      bank: "",
+      account: "",
+      ifsc: "",
     },
   });
 
-  const handleRegistration = () => {};
+  const {personalInfo, bankDetails, ecomonicDetails, daughters} = registration
+
+  const handleRegistration = () => {
+    console.log(registration)
+  };
 
   const handlePrev = () => {
     setStart((prev) => prev - 1);
@@ -52,38 +52,164 @@ const signup = () => {
     setStart((prev) => prev + 1);
   };
 
-  console.log(start);
+  const student = {
+    name:'rajeev',
+    class:'12th',
+    subject:{
+      1:'physics',
+      2:'Maths',
+      3:'Chemistry'
+    }
+  }
+
+  [name] = 'madan'
 
   const personal = [
     {
       name: "Name",
       placeholder: "Enter your name",
+      key:'Name'
     },
     {
       name: "Age",
       placeholder: "Enter your age",
+      key:'Age'
     },
     {
       name: "Gender",
       placeholder: "Enter your sex",
+      key:'Sex'
     },
     {
       name: "Aadhar Number",
       placeholder: "Enter your Aadhar number",
+      key:'Aadhar'
     },
     {
       name: "Pan Number",
       placeholder: "Enter your Pan number",
+      key: 'Pan'
     },
     {
       name: "Qualification",
       placeholder: "Enter your qualification",
+      key:'Qualification'
     },
     {
       name: "Phone Number",
       placeholder: "Enter your phone number",
+      key:'phone'
     },
   ];
+
+  // personal details.
+  const handlePersonlDetails = (e, values) => {
+     setRegitration({
+      ...personalInfo,
+      [values] : e.target.value
+     })
+  }
+
+  const bank = [
+    {
+      bank : 'Bank Name',
+      placeholder: "Enter your Bank Name",
+      key:'bank'
+    },
+    {
+      bank : 'Account Number',
+      placeholder: "Enter your Account Number",
+      key:'account'
+    },
+    {
+      bank : 'IFSC Code',
+      placeholder: "Enter your IFSC Code",
+      key:'ifsc'
+    },
+    {
+      bank : 'Upload Bank Photo',
+      placeholder: "Upload Bank Passbook ",
+      key:'image'
+    },
+    {
+      bank : 'Income (INR)',
+      placeholder: "Enter your Income",
+      key:'income'
+    },
+    {
+      bank : 'Occupation',
+      placeholder: "Enter your Occupation",
+      key:'occupation'
+    },
+    {
+      bank : 'Company',
+      placeholder: "Enter your Company Name",
+      key:'company'
+    },
+  ]
+    // bank details.
+    const handleBankDetails = (e, values) => {
+      setRegitration({
+       ...bankDetails,
+       [values] : e.target.value
+      })
+   }
+
+  const daughter = [
+    {
+      name:'Name',
+      placeholder: "Enter daughter Name",
+      key:'name'
+    },
+    {
+      name:'Age',
+      placeholder: "Enter daughter Age",
+      key:'age'
+    },
+    {
+      name:'Gender',
+      placeholder: "Enter Gender",
+      key:'sex'
+    },
+    {
+      name:'Aadhar',
+      placeholder: "Enter daughter Aadhar Number",
+      key:'aadhar'
+    },
+    {
+      name:'Highest Qualificattion',
+      placeholder: "Enter highest Qualificattion",
+      key:'highestQualificattion'
+    },
+    {
+      name:'Passing Year',
+      placeholder: "Enter Passing Year",
+      key:'passingYear'
+    },
+    {
+      name:'Bank Name',
+      placeholder: "Enter Bank Name",
+      key:'bank'
+    },
+    {
+      name:'Account Number',
+      placeholder: "Enter Account Number",
+      key:'account'
+    },
+    {
+      name:'IFSC Code',
+      placeholder: "Enter IFSC Code",
+      key:'ifsc'
+    },
+  ]
+
+    // daughtet details.
+    const handleDaughterDetails = (e, values) => {
+      setRegitration({
+       ...daughters,
+       [values] : e.target.value
+      })
+    }
 
   const information = [
     "Personal Information",
@@ -100,13 +226,48 @@ const signup = () => {
         <form onSubmit={handleRegistration}>
           {start === 0 && (
             <>
-              {personal?.map((item,i) => (
-                <div key={i} className={styles.container}>
-                  <label htmlFor={item.name}>Name</label>
+              {personal?.map((item, idx) => (
+                <div key={idx} className={styles.container}>
+                  <label htmlFor={item.name}>{item.name}</label>
                   <input
                     type="text"
                     id={item.name}
                     required
+                    // value={personalInfo[item.key.toLocaleLowerCase()]}
+                    placeholder={item.placeholder}
+                    className={styles.input}
+                    onChange={(e)=>handlePersonlDetails(e, item.key.toLocaleLowerCase())}
+                  />
+                </div>
+              ))}
+            </>
+          )}
+          {start === 1 && (
+            <>
+              {bank?.map((item, idx) => (
+                <div key={idx} className={styles.container}>
+                  <label htmlFor={item.bank}>{item.bank}</label>
+                  <input
+                    type="text"
+                    id={item.name}
+                    required
+                    placeholder={item.placeholder}
+                    className={styles.input}
+                  />
+                </div>
+              ))}
+            </>
+          )}
+          {start === 2 && (
+            <>
+              {daughter?.map((item, idx) => (
+                <div key={idx} className={styles.container}>
+                  <label htmlFor={item.name}>{item.name}</label>
+                  <input
+                    type="text"
+                    id={item.name}
+                    required
+                    value={daughters[item.key.toLocaleLowerCase()]}
                     placeholder={item.placeholder}
                     className={styles.input}
                   />

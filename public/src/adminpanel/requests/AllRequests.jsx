@@ -2,7 +2,7 @@ import React from 'react'
 
 function AllRequests() {
   return (
-    <div>
+    <div className='bg-zinc-900'>
         
     </div>
   )

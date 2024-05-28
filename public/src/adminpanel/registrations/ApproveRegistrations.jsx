@@ -8,9 +8,9 @@ function ApproveRegistrations() {
   const [approve,setApprove]=useState(false)
   var d = data[i];
   return (
-    <div className={styles.body}>
+    <div className='w-full h-full'>
     <div className={styles.toggle}>
-      <button onClick={()=>{setApprove(!approve)}}>{approve ? 'Approved': 'Approve'}</button>
+      <button className={`${approve ? "bg-yellow-300" : "bg-red-400" } py-2 px-4 w-32 rounded-lg`} onClick={()=>{setApprove(!approve)}}>{approve ? 'Approved': 'Approve'}</button>
     </div>
     <div className={styles.row}>
       <div className={styles.edit}>

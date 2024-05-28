@@ -7,11 +7,13 @@ import { Link, Routes, Route, useLocation } from "react-router-dom";
 function AllRegistrations() {
   const location = useLocation();
   const isEditPage = location.pathname.startsWith('/edit');
+  const [value,setValue]=useState(0)
   return (
-    
-      <div>
+      <div className="flex justify-center">
         {!isEditPage && 
-        <table>
+        <div>
+          <h1 className="text-2xl text-zinc-900 mb-10">All Registrations</h1>
+          <table className="p-[30px] border-2 border-orange-400">
         <thead>
         <tr className={styles.hrow}>
           <th className={styles.hname}>Name</th>
@@ -20,6 +22,7 @@ function AllRegistrations() {
           <th className={styles.haadhaar}>Aadhaar</th>
           <th className={styles.hano}>Account Number</th>
           <th className={styles.hdaughters}>Daughters</th>
+          <th></th>
         </tr>
         </thead>
         <tbody>
@@ -34,12 +37,13 @@ function AllRegistrations() {
                 {row.bank_details.account_number}
               </td>
               <td className={styles.daughters}>{row.daughters.length}</td>
-              <td><Link to={`/edit/${i}`}>Edit</Link></td>
+              <td className={`px-4 py-1 bg-yellow-300 rounded-md mx-1`}><Link to={`/edit/${i}`}>Edit</Link></td>
             </tr>
           );
         })}
         </tbody>
       </table>
+        </div>
         }
         <Routes>
           <Route path="/edit/:i" element={<ApproveRegistrations />} />
