@@ -100,8 +100,8 @@ const signup = () => {
         <form onSubmit={handleRegistration}>
           {start === 0 && (
             <>
-              {personal?.map((item) => (
-                <div className={styles.container}>
+              {personal?.map((item,i) => (
+                <div key={i} className={styles.container}>
                   <label htmlFor={item.name}>Name</label>
                   <input
                     type="text"

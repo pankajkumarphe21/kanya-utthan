@@ -8,7 +8,7 @@ function ApproveRegistrations() {
   const [approve,setApprove]=useState(false)
   var d = data[i];
   return (
-    <>
+    <div className={styles.body}>
     <div className={styles.toggle}>
       <button onClick={()=>{setApprove(!approve)}}>{approve ? 'Approved': 'Approve'}</button>
     </div>
@@ -40,7 +40,7 @@ function ApproveRegistrations() {
         })}
       </div>
     </div>
-    </>
+    </div>
   );
 }
 
