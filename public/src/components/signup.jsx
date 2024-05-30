@@ -5,10 +5,12 @@ import styles from "../styles/signup.module.css";
 
 const signup = () => {
   const [start, setStart] = useState(0);
-  const [registration, setRegitration] = useState({
+  
+  const [registration, setRegistration] = useState({
     personalInfo: {
       name: "",
       age: "",
+      email:'',
       sex: "",
       aadhar: "",
       pan: "",
@@ -38,178 +40,127 @@ const signup = () => {
     },
   });
 
-  const {personalInfo, bankDetails, ecomonicDetails, daughters} = registration
+  const { personalInfo, bankDetails, daughters } = registration;
 
-  const handleRegistration = () => {
-    console.log(registration)
-  };
-
+  // increase and decrease start value function.
   const handlePrev = () => {
     setStart((prev) => prev - 1);
   };
 
   const handleNext = () => {
+    if (start == 2) return;
     setStart((prev) => prev + 1);
   };
 
-  const student = {
-    name:'rajeev',
-    class:'12th',
-    subject:{
-      1:'physics',
-      2:'Maths',
-      3:'Chemistry'
-    }
-  }
-
-  [name] = 'madan'
-
   const personal = [
-    {
-      name: "Name",
-      placeholder: "Enter your name",
-      key:'Name'
-    },
-    {
-      name: "Age",
-      placeholder: "Enter your age",
-      key:'Age'
-    },
-    {
-      name: "Gender",
-      placeholder: "Enter your sex",
-      key:'Sex'
-    },
+    { name: "Name", placeholder: "Enter your name", key: "name" },
+    { name: "Email", placeholder: "Enter your name", key: "email" },
+    { name: "Age", placeholder: "Enter your age", key: "age" },
+    { name: "Gender", placeholder: "Enter your sex", key: "sex" },
     {
       name: "Aadhar Number",
       placeholder: "Enter your Aadhar number",
-      key:'Aadhar'
+      key: "aadhar",
     },
-    {
-      name: "Pan Number",
-      placeholder: "Enter your Pan number",
-      key: 'Pan'
-    },
+    { name: "Pan Number", placeholder: "Enter your Pan number", key: "pan" },
     {
       name: "Qualification",
       placeholder: "Enter your qualification",
-      key:'Qualification'
+      key: "qualification",
     },
     {
       name: "Phone Number",
       placeholder: "Enter your phone number",
-      key:'phone'
+      key: "phone",
     },
   ];
 
   // personal details.
   const handlePersonlDetails = (e, values) => {
-     setRegitration({
-      ...personalInfo,
-      [values] : e.target.value
-     })
-  }
+    setRegistration((prev) => ({
+      ...prev,
+      personalInfo: {
+        ...prev.personalInfo,
+        [values]: e.target.value,
+      },
+    }));
+  };
 
   const bank = [
+    { bank: "Bank Name", placeholder: "Enter your Bank Name", key: "bankName" },
     {
-      bank : 'Bank Name',
-      placeholder: "Enter your Bank Name",
-      key:'bank'
-    },
-    {
-      bank : 'Account Number',
+      bank: "Account Number",
       placeholder: "Enter your Account Number",
-      key:'account'
+      key: "accountNumber",
     },
     {
-      bank : 'IFSC Code',
+      bank: "IFSC Code",
       placeholder: "Enter your IFSC Code",
-      key:'ifsc'
+      key: "ifsc_code",
     },
     {
-      bank : 'Upload Bank Photo',
-      placeholder: "Upload Bank Passbook ",
-      key:'image'
+      bank: "Upload Bank Photo",
+      placeholder: "Upload Bank Passbook",
+      key: "image",
     },
+    { bank: "Income (INR)", placeholder: "Enter your Income", key: "income" },
     {
-      bank : 'Income (INR)',
-      placeholder: "Enter your Income",
-      key:'income'
-    },
-    {
-      bank : 'Occupation',
+      bank: "Occupation",
       placeholder: "Enter your Occupation",
-      key:'occupation'
+      key: "occupation",
     },
-    {
-      bank : 'Company',
-      placeholder: "Enter your Company Name",
-      key:'company'
-    },
-  ]
-    // bank details.
-    const handleBankDetails = (e, values) => {
-      setRegitration({
-       ...bankDetails,
-       [values] : e.target.value
-      })
-   }
+    { bank: "Company", placeholder: "Enter your Company Name", key: "company" },
+  ];
+
+  // bank details.
+  const handleBankDetails = (e, values) => {
+    setRegistration((prev) => ({
+      ...prev,
+      bankDetails: {
+        ...prev.bankDetails,
+        [values]: e.target.value,
+      },
+    }));
+  };
 
   const daughter = [
+    { name: "Name", placeholder: "Enter daughter Name", key: "name" },
+    { name: "Age", placeholder: "Enter daughter Age", key: "age" },
+    { name: "Gender", placeholder: "Enter Gender", key: "sex" },
     {
-      name:'Name',
-      placeholder: "Enter daughter Name",
-      key:'name'
-    },
-    {
-      name:'Age',
-      placeholder: "Enter daughter Age",
-      key:'age'
-    },
-    {
-      name:'Gender',
-      placeholder: "Enter Gender",
-      key:'sex'
-    },
-    {
-      name:'Aadhar',
+      name: "Aadhar",
       placeholder: "Enter daughter Aadhar Number",
-      key:'aadhar'
+      key: "aadhaar",
     },
     {
-      name:'Highest Qualificattion',
-      placeholder: "Enter highest Qualificattion",
-      key:'highestQualificattion'
+      name: "Highest Qualification",
+      placeholder: "Enter highest Qualification",
+      key: "highestQualification",
     },
     {
-      name:'Passing Year',
+      name: "Passing Year",
       placeholder: "Enter Passing Year",
-      key:'passingYear'
+      key: "passingYear",
     },
+    { name: "Bank Name", placeholder: "Enter Bank Name", key: "bank" },
     {
-      name:'Bank Name',
-      placeholder: "Enter Bank Name",
-      key:'bank'
-    },
-    {
-      name:'Account Number',
+      name: "Account Number",
       placeholder: "Enter Account Number",
-      key:'account'
+      key: "account",
     },
-    {
-      name:'IFSC Code',
-      placeholder: "Enter IFSC Code",
-      key:'ifsc'
-    },
-  ]
+    { name: "IFSC Code", placeholder: "Enter IFSC Code", key: "ifsc" },
+  ];
 
-    // daughtet details.
-    const handleDaughterDetails = (e, values) => {
-      setRegitration({
-       ...daughters,
-       [values] : e.target.value
-      })
-    }
+  // daughtet details.
+  const handleDaughterDetails = (e, values) => {
+    setRegistration((prev) => ({
+      ...prev,
+      daughters: {
+        ...prev.daughters,
+        [values]: e.target.value,
+      },
+    }));
+  };
 
   const information = [
     "Personal Information",
@@ -217,7 +168,16 @@ const signup = () => {
     "Daughter Details",
   ];
 
+  // update page as starts changes.
   useEffect(() => {}, [start]);
+
+
+  // sbumit handler
+  const handleRegistration = (e) => {
+    e.preventDefault()
+    console.log("I am clicked, lets run the function.");
+    console.log(registration);
+  };
 
   return (
     <div className={styles.myContainer}>
@@ -233,10 +193,12 @@ const signup = () => {
                     type="text"
                     id={item.name}
                     required
-                    // value={personalInfo[item.key.toLocaleLowerCase()]}
+                    value={personalInfo[item.key.toLowerCase()]}
                     placeholder={item.placeholder}
                     className={styles.input}
-                    onChange={(e)=>handlePersonlDetails(e, item.key.toLocaleLowerCase())}
+                    onChange={(e) =>
+                      handlePersonlDetails(e, item.key.toLowerCase())
+                    }
                   />
                 </div>
               ))}
@@ -252,7 +214,11 @@ const signup = () => {
                     id={item.name}
                     required
                     placeholder={item.placeholder}
+                    value={bankDetails[item.key.toLowerCase()]}
                     className={styles.input}
+                    onChange={(e) =>
+                      handleBankDetails(e, item.key.toLowerCase())
+                    }
                   />
                 </div>
               ))}
@@ -267,9 +233,12 @@ const signup = () => {
                     type="text"
                     id={item.name}
                     required
-                    value={daughters[item.key.toLocaleLowerCase()]}
+                    value={daughters[item.key.toLowerCase()]}
                     placeholder={item.placeholder}
                     className={styles.input}
+                    onChange={(e) =>
+                      handleDaughterDetails(e, item.key.toLowerCase())
+                    }
                   />
                 </div>
               ))}
@@ -286,13 +255,15 @@ const signup = () => {
             {" "}
             <FaArrowLeft className={styles.icon} /> Previous
           </button>
-          <button
-            className={styles.button}
-            disabled={start === 2}
-            onClick={handleNext}
-          >
-            Next <FaArrowRight className={styles.icon1} />
-          </button>
+          {start == 2 ? (
+            <button className={styles.button} type="submit" onClick={handleRegistration}>
+              Submit
+            </button>
+          ) : (
+            <button className={styles.button} onClick={handleNext}>
+              Next <FaArrowRight className={styles.icon1} />
+            </button>
+          )}
         </div>
       </div>
     </div>
