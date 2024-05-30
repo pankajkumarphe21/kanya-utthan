@@ -89,7 +89,7 @@ export const registrations = [
                     "account_number": "345678901235",
                     "ifsc_code": "PUNB0012347"
                 }
-            }
+            },
         ]
     },
     {
@@ -273,3 +273,4 @@ export const registrations = [
         ]
     }
 ]
+export default registrations
