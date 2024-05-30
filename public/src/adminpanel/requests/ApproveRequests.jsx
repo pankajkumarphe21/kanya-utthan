@@ -1,8 +1,15 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 
 function ApproveRequests() {
+  useEffect(() => {
+    const originalBackgroundColor = document.body.style.backgroundColor;
+    document.body.style.backgroundColor = 'black';
+    return () => {
+      document.body.style.backgroundColor = originalBackgroundColor;
+    };
+  }, []);
   return (
-    <div>ApproveRequests</div>
+    <div className='text-white'>ApproveRequests</div>
   )
 }
 
