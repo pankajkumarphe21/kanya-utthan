@@ -22,7 +22,7 @@ function App() {
             element={<ApproveRegistrations />}
           />
           <Route
-            path="/approve/requests"
+            path="/approve/requests/:i"
             element={<ApproveRequests />}
           />
           <Route path="/requests" element={<AllRequests />} />
