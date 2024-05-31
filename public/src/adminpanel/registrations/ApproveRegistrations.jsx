@@ -1,16 +1,24 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { useParams } from "react-router-dom";
 import data from "./../../dummyData/registrations";
 import styles from "./../../styles/approveregistration.module.css";
 
 function ApproveRegistrations() {
-  const { i } = useParams();
+  const { i} = useParams();
   const [approve,setApprove]=useState(false)
   var d = data[i];
+  console.log(i)
+  useEffect(() => {
+    const originalBackgroundColor = document.body.style.backgroundColor;
+    document.body.style.backgroundColor = 'black';
+    return () => {
+      document.body.style.backgroundColor = originalBackgroundColor;
+    };
+  }, []);
   return (
-    <div className='w-full h-full'>
+    <div className='w-full h-full text-white'>
     <div className={styles.toggle}>
-      <button className={`${approve ? "bg-yellow-300" : "bg-red-400" } py-2 px-4 w-32 rounded-lg`} onClick={()=>{setApprove(!approve)}}>{approve ? 'Approved': 'Approve'}</button>
+      <button className={`${approve ? "bg-blue-500" : "bg-red-500" } py-2 px-4 w-32 rounded-lg`} onClick={()=>{setApprove(!approve)}}>{approve ? 'Approved': 'Approve'}</button>
     </div>
     <div className={styles.row}>
       <div className={styles.edit}>

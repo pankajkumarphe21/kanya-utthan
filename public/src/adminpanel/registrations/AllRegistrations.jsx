@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import data from "./../../dummyData/registrations";
 import styles from "./../../styles/allregistrations.module.css";
 import ApproveRegistrations from "./ApproveRegistrations";
@@ -8,12 +8,19 @@ function AllRegistrations() {
   const location = useLocation();
   const isEditPage = location.pathname.startsWith('/edit');
   const [value,setValue]=useState(0)
+  useEffect(() => {
+    const originalBackgroundColor = document.body.style.backgroundColor;
+    document.body.style.backgroundColor = 'black';
+    return () => {
+      document.body.style.backgroundColor = originalBackgroundColor;
+    };
+  }, []);
   return (
-      <div className="flex justify-center">
+      <div className="flex justify-center text-zinc-300">
         {!isEditPage && 
         <div>
-          <h1 className="text-2xl text-zinc-900 mb-10">All Registrations</h1>
-          <table className="p-[30px] border-2 border-orange-400">
+          <h1 className="text-2xl text-white mb-10">All Registrations</h1>
+          <table className="border-2 border-orange-400">
         <thead>
         <tr className={styles.hrow}>
           <th className={styles.hname}>Name</th>
@@ -37,7 +44,7 @@ function AllRegistrations() {
                 {row.bank_details.account_number}
               </td>
               <td className={styles.daughters}>{row.daughters.length}</td>
-              <td className={`px-4 py-1 bg-yellow-300 rounded-md mx-1`}><Link to={`/edit/${i}`}>Edit</Link></td>
+              <td className={`px-4 py-1 bg-yellow-300 text-zinc-900 rounded-md mx-1`}><Link to={`/edit/${i}`}>Edit</Link></td>
             </tr>
           );
         })}
