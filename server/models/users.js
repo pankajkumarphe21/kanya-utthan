@@ -48,9 +48,9 @@ const userSchema = new mongoose.Schema({
   daughters: [{ type: mongoose.Schema.Types.ObjectId, ref: "Daughter" }],
 });
 
-const PersonalInfo = mongoose.model("PersonalInfo", personalInfoSchema);
-const BankDetails = mongoose.model("BankDetails", bankDetailsSchema);
-const Daughter = mongoose.model("Daughter", daughterSchema);
-const User = mongoose.model("User", userSchema);
+const PersonalInfo = mongoose.model("personalInfo", personalInfoSchema);
+const BankDetails = mongoose.model("bankDetails", bankDetailsSchema);
+const Daughter = mongoose.model("daughter", daughterSchema);
+const User = mongoose.model("user", userSchema);
 
 module.exports = { PersonalInfo, BankDetails, Daughter, User };
