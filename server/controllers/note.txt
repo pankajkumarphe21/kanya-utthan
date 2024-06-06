@@ -1,0 +1,15 @@
+2. create user
+5. approve user
+1. get user
+
+3. make request
+6. approve request
+4. get request
+4. make payment
+
+
+- update user
+- update request
+- payment process
+- mailing process
+- whatsapp messaging
